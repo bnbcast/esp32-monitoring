@@ -149,12 +149,12 @@ function renderData(d) {
 
   $("tFix").textContent = gps.fix ? "FIX OK" : "NO FIX";
   $("gSat").textContent = num(gps.sats) ? gps.sats : "--";
-  $("gLat").textContent = fmt(gps.lat, 3); $("gLng").textContent = fmt(gps.lng, 3);
+  $("gLat").textContent = fmt(gps.lat, 6); $("gLng").textContent = fmt(gps.lng, 6);
   $("gAlt").textContent = num(gps.alt) ? fmt(gps.alt, 0) + " m" : "--";
   $("gSpd").textContent = num(gps.kmh) ? fmt(gps.kmh) + " km/h" : "--";
   const m = $("gMap");
   if (gps.fix && num(gps.lat) && num(gps.lng)) {
-    m.href = "https://www.openstreetmap.org/?mlat=" + gps.lat + "&mlon=" + gps.lng + "#map=12/" + gps.lat + "/" + gps.lng;
+    m.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(gps.lat + "," + gps.lng);
     m.hidden = false;
   } else m.hidden = true;
 
